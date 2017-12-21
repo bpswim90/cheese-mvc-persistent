@@ -39,6 +39,10 @@ public class Category {
         this.name = name;
     }
 
+    public List<Cheese> getCheeses() {
+        return cheeses;
+    }
+
     @Override
     public String toString() {return name;}
 }
