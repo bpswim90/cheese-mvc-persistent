@@ -10,7 +10,6 @@
 
 <p th:unless="${cheeses} and ${cheeses.size()}">no cheese :(</p>
 
-
 <table class="table">
 
     <tr>
@@ -26,6 +25,11 @@
     </tr>
 
 </table>
+
+<nav>
+    <a href="/cheese/add">Add</a> |
+    <a href="/cheese/remove">Remove</a>
+</nav>
 
 </body>
 </html>
