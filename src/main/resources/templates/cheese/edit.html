@@ -27,7 +27,9 @@
         </select>
     </div>
 
-    <input type="submit" value="Add Cheese" />
+    <input type="hidden" th:value="${cheese.id}" name="cheeseId" />
+
+    <input type="submit" value="Edit Cheese" />
 </form>
 
 </body>

@@ -46,16 +46,12 @@ public class CheeseController {
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddCheeseForm(@ModelAttribute  @Valid Cheese newCheese,
                                        Errors errors,
-                                       @RequestParam int categoryId,
                                        Model model) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Cheese");
             return "cheese/add";
         }
-
-        Category cat = categoryDao.findOne(categoryId);
-        newCheese.setCategory(cat);
 
         cheeseDao.save(newCheese);
         return "redirect:";
@@ -88,5 +84,19 @@ public class CheeseController {
 
         return "cheese/index";
     }
+
+    @RequestMapping(value = "edit/{cheeseId}", method = RequestMethod.GET)
+    public String displayEditForm(Model model,
+                                  @PathVariable int cheeseId) {
+        Cheese cheese = cheeseDao.findOne(cheeseId);
+
+        model.addAttribute("cheese",cheese);
+        model.addAttribute("categories",categoryDao.findAll());
+        model.addAttribute("title","Edit Cheese: " + cheese.getName());
+
+        return "cheese/edit";
+    }
+
+    
 
 }
